@@ -1,0 +1,20 @@
+%h2 WDI Bank
+%h4 You really should reconsider where you put your money
+
+
+%h3 Checking
+
+
+#showcheckbalance
+.one= text_field_tag 'check_amount'
+.one= submit_tag 'Withdraw', :id => 'withdrawchecking'
+.one= submit_tag 'Deposit', :id => 'depositchecking'
+
+
+%h3 Savings
+
+
+#showsavebalance
+.one= text_field_tag 'save_amount'
+.one= submit_tag 'Withdraw', :id => 'withdrawsavings'
+.one= submit_tag 'Deposit', :id => 'depositsavings'
