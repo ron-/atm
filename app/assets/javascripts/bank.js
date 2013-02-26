@@ -20,15 +20,23 @@ function withdraw_checking()
   if(deduct > check_balance)
   {
     overdraft = deduct - check_balance;
-    check_balance = 0;
-    $('#showcheckbalance').css('background-color', 'red');
-    save_balance -= overdraft;
+
+    if(save_balance > overdraft)
+    {
+      save_balance -= overdraft;
+      check_balance = 0;
+      $('#showcheckbalance').css('background-color', 'red');
+    }
+    else
+    {
+      alert('You dont have enough money to do this!');
+    }
   }
   else
   {
     check_balance -= deduct;
   }
-  $('#check_amount').text('');
+  $('#check_amount').val("");
   $('#showcheckbalance').text(check_balance);
   $('#showsavebalance').text(save_balance);
 }
@@ -62,5 +70,11 @@ function deposit_saving()
   add = $('#save_amount').val();
   add = parseInt(add);
   save_balance += add;
+  $('#check_amount').val("");
   $('#showsavebalance').text(save_balance);
 }
+
+
+
+
+
