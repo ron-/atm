@@ -16,7 +16,7 @@ check_balance = 5000;
 function withdraw_checking()
 {
   deduct = $('#check_amount').val();
-  deduct = parseInt(deduct);
+  deduct = parseInt(deduct, 10);
   if(deduct > check_balance)
   {
     overdraft = deduct - check_balance;
@@ -44,31 +44,34 @@ function withdraw_checking()
 function deposit_checking()
 {
   add = $('#check_amount').val();
-  add = parseInt(add);
+  add = parseInt(add, 10);
   check_balance += add;
+
   $('#showcheckbalance').css('background-color', 'white');
   $('#showcheckbalance').text(check_balance);
+  $('#check_amount').val("");
 }
 
 function withdraw_saving()
 {
   deduct = $('#save_amount').val();
-  deduct = parseInt(deduct);
+  deduct = parseInt(deduct, 10);
   if(deduct > save_balance)
   {
-    alert('You dont have enough money to do this!');
+    alert('Your maximum withdrawl is ' + save_balance + '!');
   }
   else
   {
     save_balance -= deduct;
   }
+  $('#check_amount').val("");
   $('#showsavebalance').text(save_balance);
 }
 
 function deposit_saving()
 {
   add = $('#save_amount').val();
-  add = parseInt(add);
+  add = parseInt(add, 10);
   save_balance += add;
   $('#check_amount').val("");
   $('#showsavebalance').text(save_balance);
